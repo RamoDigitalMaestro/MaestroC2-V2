@@ -67,11 +67,7 @@
 
 
 
-
 **Hedefin Bağlanmasını Bekleyin**
-
-
-
 
 
 
