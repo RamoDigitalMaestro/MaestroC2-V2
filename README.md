@@ -48,7 +48,7 @@
 
 **Hedefin (Client) Bağlanmasını Bekleyin**
 
-#📋 KULLANIM
+**KULLANIM**
 
 **exit**: İstemci bağlantısını sonlandırır.
 
@@ -83,6 +83,16 @@
 **browser [url]**: Belirtilen URL'yi istemcide açar.
 
 **upload**: İstemciden sunucuya dosya yükler.
+
+**download**: İstemciden istemciye dosya indirir.
+
+**screenshot**: İstemcinin ekran görüntüsünü alır.
+
+**restart**: İstemciyi yeniden başlatır.
+
+**poweroff**: İstemciyi kapatır.
+
+**clear**: Terminali temizler.
 
 
 
