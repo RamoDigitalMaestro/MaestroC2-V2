@@ -1,11 +1,17 @@
 
 **MaestroC2-V2**
 
+
+
 – *Güvenlik Testleri İçin Gelişmiş Komuta ve Kontrol (C2) Platformu*
 
 *MaestroC2-V2, hedef sistemler üzerinde geniş bir yelpazede komut ve kontrol işlemleri gerçekleştirebileceğiniz, özelleştirilebilir bir Komuta ve Kontrol (C2) platformudur. Bu platform, güvenlik araştırmacıları ve sızma testi uzmanları için tasarlanmıştır.*
 
+
+
 🚀 **Özellikler**
+
+
 
 *Çoklu İşletim Sistemi Desteği: Windows ve Linux üzerinde çalışabilen istemci ve sunucu modülleri.*
 
@@ -20,7 +26,11 @@
 *Güvenli İletişim: Ağ üzerinden güvenli veri iletişimi sağlar.*
 
 
+
+
 🚀 **KURULUM**
+
+
 
 **Gereksinimler**
 
@@ -29,6 +39,8 @@
 *Pip (Python paket yöneticisi)*
 
 *Git*
+
+
 
 **Projeyi Klonlayın**
 
@@ -40,9 +52,13 @@
 ```cd MaestroC2-V2```
 
 
+
+
 **Gereksinimleri Yükleyin**
 
 ```pip install -r requirements.txt```
+
+
 
 
 **Sunucuyu Başlatın**
@@ -50,7 +66,13 @@
 ```python3 server.py -lhost [IP] -lport [PORT]```
 
 
+
+
 **Hedefin Bağlanmasını Bekleyin**
+
+
+
+
 
 
 **KOMUTLAR**
@@ -104,11 +126,16 @@
 ⚠️ **Uyarılar**
 
 
+
+
 Bu proje, eğitim amaçlı geliştirilmiştir. Yasadışı veya yetkisiz kullanımından sorumlu değilim.
 
 
 
+
 🤝 **Katkıda Bulunma**
+
+
 
 
 Katkılarınızı memnuniyetle karşılıyoruz! Katkıda bulunmak isterseniz:
