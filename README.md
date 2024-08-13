@@ -1,156 +1,112 @@
 
 **MaestroC2-V2**
 
+– *Advanced Command and Control (C2) Platform for Security Testing*
 
+*MaestroC2-V2 is a customizable Command and Control (C2) platform that allows you to perform a wide range of command and control operations on target systems. This platform is designed for security researchers and penetration testers.*
 
-– *Güvenlik Testleri İçin Gelişmiş Komuta ve Kontrol (C2) Platformu*
+🚀 **Features**
 
-*MaestroC2-V2, hedef sistemler üzerinde geniş bir yelpazede komut ve kontrol işlemleri gerçekleştirebileceğiniz, özelleştirilebilir bir Komuta ve Kontrol (C2) platformudur. Bu platform, güvenlik araştırmacıları ve sızma testi uzmanları için tasarlanmıştır.*
+*Multi-OS Support: Client and server modules that can run on Windows and Linux.*
 
+*Advanced Command Set: Gather system information, file management, network information, take screenshots and more.*
 
+*Customizable Commands: Run a specific command on the client and get the output instantly.*
 
-🚀 **Özellikler**
+*File Upload and Download: Transfer files between the server and the client.*
 
+*Client Management: Ability to work with multiple clients simultaneously.*
 
+*Secure Communication: Provides secure data communication over the network.*
 
-*Çoklu İşletim Sistemi Desteği: Windows ve Linux üzerinde çalışabilen istemci ve sunucu modülleri.*
+🚀 **INSTALLATION**
 
-*Gelişmiş Komut Seti: Sistem bilgisi toplama, dosya yönetimi, ağ bilgisi, ekran görüntüsü alma ve daha fazlası.*
-
-*Özelleştirilebilir Komutlar: Belirli bir komutu istemci üzerinde çalıştırın ve çıktıları anında alın.*
-
-*Dosya Yükleme ve İndirme: Sunucu ve istemci arasında dosya transferi.*
-
-*İstemci Yönetimi: Birden fazla istemci ile aynı anda çalışabilme.*
-
-*Güvenli İletişim: Ağ üzerinden güvenli veri iletişimi sağlar.*
-
-
-
-
-🚀 **KURULUM**
-
-
-
-**Gereksinimler**
+**Requirements**
 
 *Python 3.x*
 
-*Pip (Python paket yöneticisi)*
+*Pip (Python package manager)*
 
 *Git*
 
-
-
-
-🔗 **Projeyi Klonlayın**
+🔗 **Clone the Project**
 
 ```git clone https://github.com/RamoDigitalMaestro/MaestroC2-V2.git```
 
-
-**Dizine Girin**
+**Enter the Directory**
 
 ```cd MaestroC2-V2```
 
-
-
-
-
-📥 **Gereksinimleri Yükleyin**
+📥 **Install Requirements**
 
 ```pip install -r requirements.txt```
 
-
-
-
-
-🔌 **Sunucuyu Başlatın**
+🔌 **Start the Server**
 
 ```python3 server.py -lhost [IP] -lport [PORT]```
 
-
-
-**Hedefin Bağlanmasını Bekleyin**
-
-
+**Wait for Target to Connect**
 
 .
-📜 **KOMUTLAR**
 
-**exit**: İstemci bağlantısını sonlandırır.
+📜 **COMMANDS**
 
-**execute**: Belirli bir terminal komutunu istemcide çalıştırır.
+**exit**: Terminates the client connection.
 
-**openfile [dosya_adı]**: Belirtilen dosyanın içeriğini sunucudan istemciye gönderir.
+**execute**: Runs a specified terminal command on the client.
 
-**deletefile [dosya_adı]**: Belirtilen dosyayı siler.
+**openfile [file_name]**: Sends the contents of the specified file from the server to the client.
 
-**deletedirectory [dizin_adı]**: Belirtilen dizini siler.
+**deletefile [file_name]**: Deletes the specified file.
 
-**ls / dir**: İstemcideki mevcut dizinin içeriğini listeler.
+**deletedirectory [directory_name]**: Deletes the specified directory.
 
-**cd [hedef_klasör]**: İstemcideki çalışma dizinini değiştirir.
+**ls / dir**: Lists the contents of the current directory on the client.
 
-**createdirectory [klasör_adı]**: Yeni bir klasör oluşturur.
+**cd [target_folder]**: Changes the working directory on the client.
 
-**createfile [dosya_adı]**: Yeni bir dosya oluşturur.
+**createdirectory [folder_name]**: Creates a new folder.
 
-**editfile [metin] >> [dosya_adı]**: Belirtilen dosyanın sonuna metin ekler.
+**createfile [file_name]**: Creates a new file.
 
-**whoami**: İstemcide oturum açmış kullanıcıyı döndürür.
+**editfile [text] >> [file_name]**: Appends text to the end of the specified file.
 
-**ifconfig**: İstemcinin ağ bilgilerini döndürür.
+**whoami**: Returns the user currently logged in on the client.
 
-**cpu**: İstemcinin CPU bilgilerini döndürür.
+**ifconfig**: Returns the client's network information.
 
-**memory**: İstemcinin bellek kullanım bilgilerini döndürür.
+**cpu**: Returns the client's CPU information.
 
-**osinfo**: İstemcinin işletim sistemi bilgilerini döndürür.
+**memory**: Returns the client's memory usage information.
 
-**browser [url]**: Belirtilen URL'yi istemcide açar.
+**osinfo**: Returns the client's operating system information.
 
-**upload**: İstemciden sunucuya dosya yükler.
+**browser [url]**: Opens the specified URL on the client.
 
-**download**: İstemciden istemciye dosya indirir.
+**upload**: Uploads files from client to server.
 
-**screenshot**: İstemcinin ekran görüntüsünü alır.
+**download**: Downloads files from client to client.
 
-**restart**: İstemciyi yeniden başlatır.
+**screenshot**: Takes a screenshot of the client.
 
-**poweroff**: İstemciyi kapatır.
+**restart**: Restarts the client.
 
-**clear**: Terminali temizler.
+**poweroff**: Closes the client.
 
+**clear**: Clears the terminal.
 
+⚠️ **Security Warning**
 
-⚠️ **Güvenlik Uyarısı**
+This tool should only be used for legal purposes and on authorized systems. Any illegal use is strictly prohibited and all responsibility belongs to the user.
 
-
-
-
-Bu araç yalnızca yasal amaçlarla ve yetkili sistemlerde kullanılmalıdır. Herhangi bir yasa dışı kullanım kesinlikle yasaktır ve tüm sorumluluk kullanıcıya aittir.
-
-
-
-
-
-
-  🧑‍💻 **Proje Yapımcısı**
+🧑‍💻 **Project Producer**
 [ RAMO ](https://github.com/RamoDigitalMaestro)
 
+**IMAGES FROM PLATFORM**
 
 
 
-
-**PLATFORMDAN GÖRÜNTÜLER**
-
-
-![SCREENSHOT](https://i.hizliresim.com/q8dhvlk.png)
+![SCREENSHOTS](https://i.hizliresim.com/q8dhvlk.png)
 
 
-
-**BEĞENDİYSENİZ YILDIZLAMAYI UNUTMAYIN İYİ GÜNLER GÖRÜŞMEK ÜZERE**
-
-
-
-
+**IF YOU LIKE IT DON'T FORGET TO STAR IT HAVE A GOOD DAY SEE YOU SOON**
