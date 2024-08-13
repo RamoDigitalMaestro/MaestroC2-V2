@@ -149,7 +149,7 @@ Bu araç yalnızca yasal amaçlarla ve yetkili sistemlerde kullanılmalıdır. H
 
 
 
-
+**BEĞENDİYSENİZ YILDIZLAMAYI UNUTMAYIN İYİ GÜNLER GÖRÜŞMEK ÜZERE**
 
 
 
