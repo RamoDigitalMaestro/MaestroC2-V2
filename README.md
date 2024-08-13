@@ -31,7 +31,8 @@
 *Git*
 
 **Projeyi Klonlayın**
-```bash
+```
+bash
 git clone https://github.com/RamoDigitalMaestro/MaestroC2-V2.git ```
 
 **Dizine Girin**
