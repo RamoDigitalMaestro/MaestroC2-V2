@@ -6,10 +6,15 @@ MaestroC2-V2, hedef sistemler üzerinde geniş bir yelpazede komut ve kontrol i�
 
 🚀 Özellikler
 Çoklu İşletim Sistemi Desteği: Windows ve Linux üzerinde çalışabilen istemci ve sunucu modülleri.
+
 Gelişmiş Komut Seti: Sistem bilgisi toplama, dosya yönetimi, ağ bilgisi, ekran görüntüsü alma ve daha fazlası.
+
 Özelleştirilebilir Komutlar: Belirli bir komutu istemci üzerinde çalıştırın ve çıktıları anında alın.
+
 Dosya Yükleme ve İndirme: Sunucu ve istemci arasında dosya transferi.
+
 İstemci Yönetimi: Birden fazla istemci ile aynı anda çalışabilme.
+
 Güvenli İletişim: Ağ üzerinden güvenli veri iletişimi sağlar.
 
 
