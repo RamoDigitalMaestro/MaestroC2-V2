@@ -46,7 +46,8 @@
 
 ```python3 server.py -lhost [IP] -lport [PORT]```
 
-**Hedefin (Client) Bağlanmasını Bekleyin**
+**Hedefin Bağlanmasını Bekleyin**
+
 
 **KULLANIM**
 
