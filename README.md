@@ -20,7 +20,7 @@
 *Güvenli İletişim: Ağ üzerinden güvenli veri iletişimi sağlar.*
 
 
-🚀 #KURULUM
+🚀 **KURULUM**
 
 **Gereksinimler**
 
