@@ -24,4 +24,8 @@ Adım 3: server(ip-port) dinleme Başlatın.
 Server dinlemeyi başlattıktan sonra hedefin client.py-client.exe çalıştırmasını bekleyin.
 Ardından komutları kullanarak sonuçları bekleyin.
 
+🤝 Katkıda Bulunma
+Katkıda bulunmak isterseniz, lütfen bir Pull Request açın veya bir Issue oluşturun. Katkılarınızı görmekten memnuniyet duyarız!
 
+📝 Lisans
+Bu proje MIT Lisansı altında lisanslanmıştır. Daha fazla bilgi için LICENSE dosyasını inceleyin.
