@@ -140,6 +140,11 @@ Bu araç yalnızca yasal amaçlarla ve yetkili sistemlerde kullanılmalıdır. H
 
 
 
+
+
+**PLATFORMDAN GÖRÜNTÜLER**
+
+
 ![SCREENSHOT](https://i.hizliresim.com/q8dhvlk.png)
 
 
