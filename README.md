@@ -20,7 +20,7 @@
 *Güvenli İletişim: Ağ üzerinden güvenli veri iletişimi sağlar.*
 
 
-🚀 **KURULUM**
+🚀 #KURULUM
 
 **Gereksinimler**
 
@@ -29,5 +29,17 @@
 *Pip (Python paket yöneticisi)*
 
 *Git*
+
+**Projeyi Klonlayın**
+```bash
+git clone https://github.com/RamoDigitalMaestro/MaestroC2-V2.git
+
+**Dizine Girin**
+```bash
+cd MaestroC2-V2
+
+
+
+
 
 
