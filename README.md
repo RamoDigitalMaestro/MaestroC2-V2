@@ -1,31 +1,22 @@
 
-#MaestroC2-V2
-MaestroC2-V2, kullanıcıların gelişmiş komuta ve kontrol (C2) operasyonlarını gerçekleştirebileceği bir platformdur. Bu proje, güvenlik testleri ve denetimlerinde kullanılmak üzere tasarlanmış olup, yüksek seviyede özelleştirilebilir özellikler sunar.
+MaestroC2-V2
+MaestroC2-V2 – Güvenlik Testleri İçin Gelişmiş Komuta ve Kontrol (C2) Platformu
 
-#Özellikler
-Esnek ve Özelleştirilebilir: Kendi C2 senaryolarınızı oluşturun ve yönetim panelinden kolayca yönetin.
-Gelişmiş Komut Seti: Çok çeşitli komutlar ile sistem kontrolü.
-Çoklu Platform Desteği: Farklı işletim sistemlerinde çalışabilme yeteneği.(Linux ve Windows)
+MaestroC2-V2, hedef sistemler üzerinde geniş bir yelpazede komut ve kontrol işlemleri gerçekleştirebileceğiniz, özelleştirilebilir bir Komuta ve Kontrol (C2) platformudur. Bu platform, güvenlik araştırmacıları ve sızma testi uzmanları için tasarlanmıştır.
 
-#Kurulum
+🚀 Özellikler
+Çoklu İşletim Sistemi Desteği: Windows ve Linux üzerinde çalışabilen istemci ve sunucu modülleri.
+Gelişmiş Komut Seti: Sistem bilgisi toplama, dosya yönetimi, ağ bilgisi, ekran görüntüsü alma ve daha fazlası.
+Özelleştirilebilir Komutlar: Belirli bir komutu istemci üzerinde çalıştırın ve çıktıları anında alın.
+Dosya Yükleme ve İndirme: Sunucu ve istemci arasında dosya transferi.
+İstemci Yönetimi: Birden fazla istemci ile aynı anda çalışabilme.
+Güvenli İletişim: Ağ üzerinden güvenli veri iletişimi sağlar.
+
+
+🚀 KURULUM
 Gereksinimler
 Python 3.x
 Pip (Python paket yöneticisi)
 Git
 
-Adım 1: Projeyi Klonlayın
-git clone https://github.com/RamoDigitalMaestro/MaestroC2-V2.git
-cd MaestroC2-V2
-Adım 2: Gereksinimleri Yükleyin
-pip install -r requirements.txt
-Adım 3: server(ip-port) dinleme Başlatın.
 
-🚀 Kullanım
-Server dinlemeyi başlattıktan sonra hedefin client.py-client.exe çalıştırmasını bekleyin.
-Ardından komutları kullanarak sonuçları bekleyin.
-
-🤝 Katkıda Bulunma
-Katkıda bulunmak isterseniz, lütfen bir Pull Request açın veya bir Issue oluşturun. Katkılarınızı görmekten memnuniyet duyarız!
-
-📝 Lisans
-Bu proje MIT Lisansı altında lisanslanmıştır. Daha fazla bilgi için LICENSE dosyasını inceleyin.
