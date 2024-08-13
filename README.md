@@ -42,7 +42,8 @@
 
 
 
-**Projeyi Klonlayın**
+
+🔗 **Projeyi Klonlayın**
 
 ```git clone https://github.com/RamoDigitalMaestro/MaestroC2-V2.git```
 
@@ -54,14 +55,16 @@
 
 
 
-**Gereksinimleri Yükleyin**
+
+📥 **Gereksinimleri Yükleyin**
 
 ```pip install -r requirements.txt```
 
 
 
 
-**Sunucuyu Başlatın**
+
+🔌 **Sunucuyu Başlatın**
 
 ```python3 server.py -lhost [IP] -lport [PORT]```
 
@@ -71,7 +74,8 @@
 
 
 
-**KOMUTLAR**
+.
+📜 **KOMUTLAR**
 
 **exit**: İstemci bağlantısını sonlandırır.
 
@@ -119,30 +123,22 @@
 
 
 
-⚠️ **Uyarılar**
+⚠️ **Güvenlik Uyarısı**
 
 
 
 
-Bu proje, eğitim amaçlı geliştirilmiştir. Yasadışı veya yetkisiz kullanımından sorumlu değilim.
+Bu araç yalnızca yasal amaçlarla ve yetkili sistemlerde kullanılmalıdır. Herhangi bir yasa dışı kullanım kesinlikle yasaktır ve tüm sorumluluk kullanıcıya aittir.
 
 
 
 
-🤝 **Katkıda Bulunma**
 
 
 
+🧑‍💻 **Yazılım Geliştici**
 
-Katkılarınızı memnuniyetle karşılıyoruz! Katkıda bulunmak isterseniz:
-
-Bu depoyu fork edin.
-
-Yeni bir özellik üzerinde çalışın.
-
-Çalışmanızı tamamladığınızda bir Pull Request gönderin.
-
-
+[ RAMO ](https://github.com/RamoDigitalMaestro)
 
 
 
