@@ -34,22 +34,26 @@
 
 ```git clone https://github.com/RamoDigitalMaestro/MaestroC2-V2.git```
 
+
 **Dizine Girin**
 
 ```cd MaestroC2-V2```
+
 
 **Gereksinimleri Yükleyin**
 
 ```pip install -r requirements.txt```
 
+
 **Sunucuyu Başlatın**
 
 ```python3 server.py -lhost [IP] -lport [PORT]```
 
+
 **Hedefin Bağlanmasını Bekleyin**
 
 
-**KULLANIM**
+**KOMUTLAR**
 
 **exit**: İstemci bağlantısını sonlandırır.
 
@@ -96,8 +100,10 @@
 **clear**: Terminali temizler.
 
 
+
 ⚠️ **Uyarılar**
 Bu proje, eğitim amaçlı geliştirilmiştir. Yasadışı veya yetkisiz kullanımından sorumlu değilim.
+
 
 
 🤝 **Katkıda Bulunma**
