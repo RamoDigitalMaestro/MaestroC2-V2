@@ -135,9 +135,7 @@ Bu araç yalnızca yasal amaçlarla ve yetkili sistemlerde kullanılmalıdır. H
 
 
 
-
-🧑‍💻 **Yazılım Geliştici**
-
+  🧑‍💻 **Proje Yapımcısı**
 [ RAMO ](https://github.com/RamoDigitalMaestro)
 
 
