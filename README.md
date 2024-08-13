@@ -102,11 +102,14 @@
 
 
 ⚠️ **Uyarılar**
+
+
 Bu proje, eğitim amaçlı geliştirilmiştir. Yasadışı veya yetkisiz kullanımından sorumlu değilim.
 
 
 
 🤝 **Katkıda Bulunma**
+
 
 Katkılarınızı memnuniyetle karşılıyoruz! Katkıda bulunmak isterseniz:
 
