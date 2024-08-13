@@ -35,8 +35,65 @@
 ```git clone https://github.com/RamoDigitalMaestro/MaestroC2-V2.git```
 
 **Dizine Girin**
-```bash
-cd MaestroC2-V2
+
+```cd MaestroC2-V2```
+
+**Gereksinimleri Yükleyin**
+
+```pip install -r requirements.txt```
+
+**Sunucuyu Başlatın**
+
+```python3 server.py -lhost [IP] -lport [PORT]```
+
+**Hedefin (Client) Bağlanmasını Bekleyin**
+
+#📋 KULLANIM
+
+**exit**: İstemci bağlantısını sonlandırır.
+
+**execute**: Belirli bir terminal komutunu istemcide çalıştırır.
+
+**openfile [dosya_adı]**: Belirtilen dosyanın içeriğini sunucudan istemciye gönderir.
+
+**deletefile [dosya_adı]**: Belirtilen dosyayı siler.
+
+**deletedirectory [dizin_adı]**: Belirtilen dizini siler.
+
+**ls / dir**: İstemcideki mevcut dizinin içeriğini listeler.
+
+**cd [hedef_klasör]**: İstemcideki çalışma dizinini değiştirir.
+
+**createdirectory [klasör_adı]**: Yeni bir klasör oluşturur.
+
+**createfile [dosya_adı]**: Yeni bir dosya oluşturur.
+
+**editfile [metin] >> [dosya_adı]**: Belirtilen dosyanın sonuna metin ekler.
+
+**whoami**: İstemcide oturum açmış kullanıcıyı döndürür.
+
+**ifconfig**: İstemcinin ağ bilgilerini döndürür.
+
+**cpu**: İstemcinin CPU bilgilerini döndürür.
+
+**memory**: İstemcinin bellek kullanım bilgilerini döndürür.
+
+**osinfo**: İstemcinin işletim sistemi bilgilerini döndürür.
+
+**browser [url]**: Belirtilen URL'yi istemcide açar.
+
+**upload**: İstemciden sunucuya dosya yükler.
+
+
+
+
+
+
+
+
+
+
+
 
 
 
