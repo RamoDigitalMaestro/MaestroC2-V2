@@ -96,7 +96,19 @@
 **clear**: Terminali temizler.
 
 
+⚠️ **Uyarılar**
+Bu proje, eğitim amaçlı geliştirilmiştir. Yasadışı veya yetkisiz kullanımından sorumlu değilim.
 
+
+🤝 **Katkıda Bulunma**
+
+Katkılarınızı memnuniyetle karşılıyoruz! Katkıda bulunmak isterseniz:
+
+Bu depoyu fork edin.
+
+Yeni bir özellik üzerinde çalışın.
+
+Çalışmanızı tamamladığınızda bir Pull Request gönderin.
 
 
 
