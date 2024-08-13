@@ -140,7 +140,7 @@ Bu araç yalnızca yasal amaçlarla ve yetkili sistemlerde kullanılmalıdır. H
 
 
 
-[url=https://hizliresim.com/q8dhvlk][img]https://i.hizliresim.com/q8dhvlk.png[/img][/url]
+[SCREENSHOT](https://hizliresim.com/q8dhvlk][img]https://i.hizliresim.com/q8dhvlk.png)
 
 
 
